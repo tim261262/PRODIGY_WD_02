@@ -1,0 +1,110 @@
+const div = document.querySelector(".dis-none");
+const resLi = document.querySelector(".res");
+const staLi = document.querySelector(".sta");
+
+const start = document.querySelector("#start");
+const resume = document.querySelector("#resume");
+const lap = document.querySelector("#lap");
+const stopp = document.querySelector("#stop");
+const reset = document.querySelector("#reset");
+
+const hr = document.querySelector("#hr");
+const min = document.querySelector("#min");
+const sec = document.querySelector("#sec");
+const mili = document.querySelector("#mili");
+
+let miliSec = 1, second = 1, minute = 1, hour = 1, interval = null;
+
+function startTimer(){
+    if(interval){
+        clearInterval(interval);
+    }
+    staLi.style.display = "none";
+    resLi.style.display = "block";
+    interval = setInterval(() => {
+        if(miliSec <= 100){
+            mili.textContent = miliSec < 10 ? "0" + miliSec : miliSec;
+            if (miliSec === 100){
+                sec.textContent = second < 10 ? "0" + second + ":" : second + ":";
+                if(second === 60){
+                    min.textContent = minute < 10 ? "0"  + minute + ":" : minute + ":";
+                    minute++;
+                    second = 0;
+                    if(minute === 60){
+                        hr.textContent = hour < 10 ? "0" + hour + ":"  : hour + ":";
+                        hour++;
+                        minute = 1;
+                    }
+                }
+                second++;
+                miliSec = 0;
+            }
+            miliSec++;
+        }
+    }, 10);
+}
+
+
+function re(){
+    startTimer();
+}
+
+function stopTimer(){
+    clearInterval(interval);
+    interval = null;
+}
+
+function recordLap(){
+    div.classList.remove("dis-none");
+    div.classList.add("lap");
+    const h2 = document.createElement("h2");
+    h2.classList.add("remove");
+    const h22 = document.querySelectorAll("h2");
+    let minutee = minute - 1;
+    let hourr = hour - 1;
+    let secondd = second -1;
+    let miliSecc = miliSec - 1;
+    if(hour > 0 || minute > 0 || second > 0 || miliSec > 0){
+        let lapNumber = h22.length + 1;
+        h2.textContent = "Lap " + lapNumber + ": " +
+        (hour < 10 ? "0" : "") + hourr + ":" + 
+        (minute < 10 ? "0" : "") + minutee + ":" + 
+        (second < 11 ? "0" : "") + secondd + ":" + 
+        (miliSec < 10 ? "0" : "") + miliSecc; 
+    }
+    div.appendChild(h2);
+}
+
+function resetTimer(){
+    staLi.style.display = "block";
+    resLi.style.display = "none";
+    div.classList.add("dis-none");
+    const removeLaps = document.querySelectorAll(".remove");
+    miliSec = 1;
+    second = 1;
+    minute = 1; 
+    hour = 1;
+    updateDisplay();
+    removeLaps.forEach(item => {
+        item.remove();
+    });
+    clearInterval(interval)
+}
+
+function updateDisplay(){
+    hr.textContent = "";
+    min.textContent = "";
+    sec.textContent = "00:";
+    mili.textContent = "00";
+}
+
+
+
+start.addEventListener("click", startTimer);
+resume.addEventListener("click", re)
+stopp.addEventListener("click", stopTimer);
+lap.addEventListener("click", recordLap);
+reset.addEventListener("click", resetTimer);
+
+
+
