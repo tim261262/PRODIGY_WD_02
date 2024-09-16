@@ -1,25 +1,27 @@
 const div = document.querySelector(".dis-none");
+// List elements
 const staLi = document.querySelector(".starting");
 const resLi = document.querySelector(".resuming");
 const stoLi = document.querySelector(".stoping");
 const lapLi = document.querySelector(".lapping");
 const setLi = document.querySelector(".reseting");
+
 const borderP = document.querySelector(".border p");
 const nav = document.querySelector(".nav ul");
-
+// Selected the button elements
 const start = document.querySelector("#start");
 const resume = document.querySelector("#resume");
 const lap = document.querySelector("#lap");
 const stopp = document.querySelector("#stop");
 const reset = document.querySelector("#reset");
-
+// Selected the elements that contian the time/numbers
 const hr = document.querySelector("#hr");
 const min = document.querySelector("#min");
 const sec = document.querySelector("#sec");
 const mili = document.querySelector("#mili");
 
 let miliSec = 1, second = 1, minute = 1, hour = 1, interval = null;
-
+// Start Timer function
 function startTimer(){
     if(interval){
         clearInterval(interval);
@@ -51,20 +53,20 @@ function startTimer(){
     }, 10);
 }
 
-
+// function to Resume the watch after Stop is applied
 function re(){
     stoLi.style.display = "block";
     resLi.style.display = "none";
     startTimer();
 }
-
+// funtion to stop the timer
 function stopTimer(){
     stoLi.style.display = "none";
     resLi.style.display = "block";
     clearInterval(interval);
     interval = null;
 }
-
+// function to record Laps
 function recordLap(){
     nav.classList.add("list");
     borderP.classList.add("pp");
@@ -87,7 +89,7 @@ function recordLap(){
     }
     div.appendChild(h2);
 }
-
+//  function to reset the timer
 function resetTimer(){
     nav.classList.remove("list");
     borderP.classList.remove("pp");
@@ -108,7 +110,7 @@ function resetTimer(){
     });
     clearInterval(interval)
 }
-
+// function to update the display or timer
 function updateDisplay(){
     hr.textContent = "";
     min.textContent = "";
@@ -117,7 +119,7 @@ function updateDisplay(){
 }
 
 
-
+// collection of addevent listners
 start.addEventListener("click", startTimer);
 resume.addEventListener("click", re)
 stopp.addEventListener("click", stopTimer);
