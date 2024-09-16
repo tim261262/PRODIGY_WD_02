@@ -4,14 +4,17 @@
     box-sizing: border-box;
 }
 body{
-    background: linear-gradient(to right, brown, black);
+    background: linear-gradient(to right, rgb(90, 53, 53), rgb(58, 57, 57));
 }
-
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
 .container{
     margin-top: 7vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
 }
@@ -55,28 +58,47 @@ body{
     font-size: 5em;
     text-align: center;
 }
+.pp{
+    margin-top: 60px;
+}
 
 .lap{
-    padding: 0 10px 10px 10px;
-    border: 2px solid red;
+    width: 50%;
+    margin-top: 62px;
+    margin-left: 200px;
+    text-align: center;
     border-top: none;
 }
 .dis-none{
     display: none;
 }
-.res{
+.resuming, .lapping, .stoping, .reseting{
     display: none;
 }
 
-@media only screen and (min-width: 700px) {
+.list{
+    flex-direction: column;
+}
+.list .btn{
+    width: 30%;
+}
+
+@media only screen and (min-width: 1000px) {
     .nav ul{
         width: 50%;
         gap: 30px;
     }
     .border p{
-        font-size: 8em;
+        font-size: 6em;
     }
-    .border{
+    /* .border{
         width: 70%;
+    } */
+    .lap{
+        margin-top: 40px;
+        margin-left: 300px;
     }
+    /* .pp{
+        margin-top: 10px;
+    } */
 }

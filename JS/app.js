@@ -1,6 +1,11 @@
 const div = document.querySelector(".dis-none");
-const resLi = document.querySelector(".res");
-const staLi = document.querySelector(".sta");
+const staLi = document.querySelector(".starting");
+const resLi = document.querySelector(".resuming");
+const stoLi = document.querySelector(".stoping");
+const lapLi = document.querySelector(".lapping");
+const setLi = document.querySelector(".reseting");
+const borderP = document.querySelector(".border p");
+const nav = document.querySelector(".nav ul");
 
 const start = document.querySelector("#start");
 const resume = document.querySelector("#resume");
@@ -20,7 +25,9 @@ function startTimer(){
         clearInterval(interval);
     }
     staLi.style.display = "none";
-    resLi.style.display = "block";
+    stoLi.style.display = "block";
+    setLi.style.display = "block";
+    lapLi.style.display = "block";
     interval = setInterval(() => {
         if(miliSec <= 100){
             mili.textContent = miliSec < 10 ? "0" + miliSec : miliSec;
@@ -46,15 +53,21 @@ function startTimer(){
 
 
 function re(){
+    stoLi.style.display = "block";
+    resLi.style.display = "none";
     startTimer();
 }
 
 function stopTimer(){
+    stoLi.style.display = "none";
+    resLi.style.display = "block";
     clearInterval(interval);
     interval = null;
 }
 
 function recordLap(){
+    nav.classList.add("list");
+    borderP.classList.add("pp");
     div.classList.remove("dis-none");
     div.classList.add("lap");
     const h2 = document.createElement("h2");
@@ -76,6 +89,11 @@ function recordLap(){
 }
 
 function resetTimer(){
+    nav.classList.remove("list");
+    borderP.classList.remove("pp");
+    stoLi.style.display = "none";
+    setLi.style.display = "none";
+    lapLi.style.display = "none";
     staLi.style.display = "block";
     resLi.style.display = "none";
     div.classList.add("dis-none");

@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
+    <h1 class="title">StopWatch</h1>
     <div class="container">
-        <h1 class="title">StopWatch</h1>
         <nav class="nav">
             <ul>
-                <li class="sta"><button id="start" class="btn">Start</button></li>
-                <li class="res"><button id="resume" class="btn">Resume</button></li>
-                <li><button id="lap" class="btn">Lap</button></li>
-                <li><button id="stop" class="btn">Stop</button></li>
-                <li><button id="reset" class="btn">Reset</button></li>
+                <li class="starting"><button id="start" class="btn">Start</button></li>
+                <li class="resuming"><button id="resume" class="btn">Resume</button></li>
+                <li class="lapping"><button id="lap" class="btn">Lap</button></li>
+                <li class="stoping"><button id="stop" class="btn">Stop</button></li>
+                <li class="reseting"><button id="reset" class="btn">Reset</button></li>
 
             </ul>
         </nav>
@@ -25,8 +25,8 @@
                 <span id="min"></span>
                 <span id="sec">00:</span><span id="mili">00</span>
             </p>
+            <div class="dis-none"></div>
         </div>
-        <div class="dis-none"></div>
     </div>
     <script src="JS/app.js"></script>
 </body>
