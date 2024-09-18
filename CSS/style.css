@@ -91,14 +91,11 @@ h1{
     .border p{
         font-size: 6em;
     }
-    /* .border{
+    .border{
         width: 70%;
-    } */
+    }
     .lap{
         margin-top: 40px;
         margin-left: 300px;
     }
-    /* .pp{
-        margin-top: 10px;
-    } */
 }
